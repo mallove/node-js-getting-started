@@ -8,34 +8,43 @@ console.log("index.js:6, process.env = " + util.inspect(process.env));
 var url   = require('url');
 var Redis = require('ioredis');
 
+console.log("EAM trace, index.js:14, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
+
 /////////////////////////////////////////////
-redis_uri = url.parse(process.env.REDIS_URL);
-var redis = new Redis({
-  port: Number(redis_uri.port) + 1,
-  host: redis_uri.hostname,
-  password: redis_uri.auth.split(':')[1],
-  db: 0,
-  tls: {
-    rejectUnauthorized: false,
-    requestCert: true,
-    agent: false
-  }
-});
+try {
+  redis_uri = url.parse(process.env.REDIS_URL);
 
-redis.on("connect", function (msg) {
-    console.log("trace, msg = " + util.inspect(msg));
-    console.log("Connected!");
-});
+  var redis = new Redis({
+    port: Number(redis_uri.port) + 1,
+    host: redis_uri.hostname,
+    password: redis_uri.auth.split(':')[1],
+    db: 0,
+    tls: {
+      rejectUnauthorized: false,
+      requestCert: true,
+      agent: false
+    }
+  });
 
-redis.ping("PING").then(function(result) {
-  console.log(result);
-  process.exit();
-});
+  redis.on("connect", function (msg) {
+      console.log("trace, msg = " + util.inspect(msg));
+      console.log("Connected!");
+  });
 
-redis.set("foo", "bar");
-redis.get("foo", function(err, result) {
-  console.log(result);
-});
+  redis.ping("PING").then(function(result) {
+    console.log(result);
+    process.exit();
+  });
+
+  redis.set("foo", "bar");
+  redis.get("foo", function(err, result) {
+    console.log(result);
+  });
+
+} catch (e) {
+  console.trace(e);
+}
+
 
 /////////////////////////////////////////////
 
