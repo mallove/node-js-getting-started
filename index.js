@@ -20,7 +20,7 @@ console.log("EAM trace, index.js:14, process.env.REDIS_URL = " + util.inspect(pr
 try {
   redis_uri = url.parse(process.env.REDIS_URL);
 
-  redis_port = Number(redis_uri.port);
+  var redis_port = Number(redis_uri.port);
   if (process.env.STUNNEL_ENABLED) {
     redis_port = Number(redis_uri.port) + 1;
   }
@@ -39,7 +39,7 @@ try {
       requestCert: true,
       agent: false
     };
-    redis_params.port = u.port + 1;
+    redis_params.port = redis_port + 1;
   }
 
   var redis = new Redis(redis_params);
