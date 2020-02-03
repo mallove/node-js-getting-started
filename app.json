@@ -6,7 +6,7 @@
   "keywords": ["node", "express", "heroku"],
   "image": "heroku/nodejs",
   "addons": [
-    "heroku-redis:hobby-dev",
+    "heroku-redis:premium-0",
     "mongolab:sandbox"
   ],
   "env": {
