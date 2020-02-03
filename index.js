@@ -1,3 +1,5 @@
+console.log("index.js:1, process.env = " + util.inspect(process.env));
+
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
