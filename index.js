@@ -21,6 +21,22 @@ var redis = new Redis({
     agent: false
   }
 });
+
+redis.on("connect", function (msg) {
+    console.log("trace, msg = " + util.inspect(msg));
+    console.log("Connected!");
+});
+
+redis.ping("PING").then(function(result) {
+  console.log(result);
+  process.exit();
+});
+
+redis.set("foo", "bar");
+redis.get("foo", function(err, result) {
+  console.log(result);
+});
+
 /////////////////////////////////////////////
 
 express()
