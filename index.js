@@ -10,8 +10,10 @@ console.log("EAM trace, index.js:11, os.hostname() = " + util.inspect(os.hostnam
 
 
 //process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-3-225-119-109.compute-1.amazonaws.com:27899";
-// process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-18-213-222-5.compute-1.amazonaws.com:9119";
 //process.env.REDIS_URL_STUNNEL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-3-225-119-109.compute-1.amazonaws.com:27900";
+
+// Why doesn't Herokup put the correct REDIS_URL in the env for us?
+process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-18-213-222-5.compute-1.amazonaws.com:9119";
 
 console.log("index.js:9, process.env = " + util.inspect(process.env));
 
