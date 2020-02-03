@@ -13,12 +13,17 @@ var Redis = require('ioredis');
 
 console.log("EAM trace, index.js:14, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
 
+redis_port = Number(redis_uri.port);
+if (process.env.STUNNEL_ENABLED) {
+  redis_port = Number(redis_uri.port) + 1;
+}
+
 /////////////////////////////////////////////
 try {
   redis_uri = url.parse(process.env.REDIS_URL);
 
   var redis = new Redis({
-    port: Number(redis_uri.port) + 1,
+    port: redis_port,
     host: redis_uri.hostname,
     password: redis_uri.auth.split(':')[1],
     db: 0,
