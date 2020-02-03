@@ -6,7 +6,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 //process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-3-225-119-109.compute-1.amazonaws.com:27899";
-// process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-18-213-222-5.compute-1.amazonaws.com:9119"
+// process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-18-213-222-5.compute-1.amazonaws.com:9119";
 //process.env.REDIS_URL_STUNNEL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-3-225-119-109.compute-1.amazonaws.com:27900";
 
 console.log("index.js:9, process.env = " + util.inspect(process.env));
@@ -65,9 +65,14 @@ try {
 
 /////////////////////////////////////////////
 
+console.log("EAM trace, index.js:68, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+console.log("EAM trace, index.js:75, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
+
