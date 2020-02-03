@@ -39,7 +39,6 @@ try {
       requestCert: true,
       agent: false
     };
-    redis_params.port = redis_port + 1;
   }
 
   var redis = new Redis(redis_params);
