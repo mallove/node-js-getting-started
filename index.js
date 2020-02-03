@@ -5,7 +5,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-require('os');
+const os = require('os');
 console.log("EAM trace, index.js:11, os.hostname() = " + util.inspect(os.hostname()));
 
 
