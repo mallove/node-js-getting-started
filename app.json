@@ -4,7 +4,7 @@
   "repository": "https://github.com/mallove/node-js-getting-started.git ",
   "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
   "keywords": ["node", "express", "heroku"],
-  "image": "heroku/nodejs"
+  "image": "heroku/nodejs",
   "addons": [
     "heroku-redis:hobby-dev",
     "mongolab:sandbox"
