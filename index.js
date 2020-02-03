@@ -47,6 +47,8 @@ try {
     };
   }
 
+  console.log("EAM trace, index.js:50, redis_params = " + util.inspect(redis_params));
+
   var redis = new Redis(redis_params);
 
   redis.on("connect", function (msg) {
