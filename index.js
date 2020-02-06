@@ -10,6 +10,9 @@ var Redis = require('ioredis');
 try {
   redis_uri = url.parse(process.env.REDIS_URL);
 
+  console.log("EAM trace, index.js:13, process.env = " + util.inspect(process.env));
+  console.log("EAM trace, index.js:13, redis_uri  = " + util.inspect(redis_uri ));
+
   var redis_port = Number(redis_uri.port);
   if (process.env.STUNNEL_ENABLED) {
     redis_port = Number(redis_uri.port) + 1;
