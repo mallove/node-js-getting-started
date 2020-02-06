@@ -4,6 +4,13 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 var url   = require('url');
 var Redis = require('ioredis');
 
@@ -60,11 +67,4 @@ try {
 // /////////////////////////////////////////////
 // 
 // console.log("EAM trace, index.js:68, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
-
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
