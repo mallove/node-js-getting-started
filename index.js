@@ -1,28 +1,12 @@
 var util = require('util')
-console.log("index.js:2, process.env = " + util.inspect(process.env));
 
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-const os = require('os');
-console.log("EAM trace, index.js:11, os.hostname() = " + util.inspect(os.hostname()));
-
-
-//process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-3-225-119-109.compute-1.amazonaws.com:27899";
-//process.env.REDIS_URL_STUNNEL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-3-225-119-109.compute-1.amazonaws.com:27900";
-
-// Why doesn't Herokup put the correct REDIS_URL in the env for us?
-process.env.REDIS_URL = "redis://h:p1a5c9e67cd6ffb23967d919165df93932f3b55dce981ef0a989adb738d977258@ec2-18-213-222-5.compute-1.amazonaws.com:9119";
-
-console.log("index.js:9, process.env = " + util.inspect(process.env));
-
 var url   = require('url');
 var Redis = require('ioredis');
 
-console.log("EAM trace, index.js:14, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
-
-/////////////////////////////////////////////
 try {
   redis_uri = url.parse(process.env.REDIS_URL);
 
@@ -69,11 +53,10 @@ try {
 } catch (e) {
   console.trace(e);
 }
-
-
-/////////////////////////////////////////////
-
-console.log("EAM trace, index.js:68, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
+// 
+// /////////////////////////////////////////////
+// 
+// console.log("EAM trace, index.js:68, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -81,6 +64,4 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
-console.log("EAM trace, index.js:75, process.env.REDIS_URL = " + util.inspect(process.env.REDIS_URL));
 
