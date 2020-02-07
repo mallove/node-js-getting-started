@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
-  .use(express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), {index: true}))
+  .use( 'public/.well-known/acme-challenge', express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), {index: true}))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
