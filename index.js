@@ -4,16 +4,21 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-express()
-  .use(express.static(path.join(__dirname, 'public'), { dotfiles: 'allow' } ))
-  //.use(express.static('public/.well-known',                path.join(__dirname, 'public/.well-known'               ), { dotfiles: 'allow' } ))
-  //.use('/.well-known/acme-challenge', express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), { dotfiles: 'allow' } ))
-  //.use( 'public/.well-known/acme-challenge', express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), {index: true}))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  //.get('/.well-known/acme-challenge/vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE', (req, res) => res.send('vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE.d0FtQceWed-EcSjRPleaY5YGIYBNlU5dlgnYoMXql7w'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+// express()
+//   .use(express.static(path.join(__dirname, 'public'), { dotfiles: 'allow' } ))
+//   //.use(express.static('public/.well-known',                path.join(__dirname, 'public/.well-known'               ), { dotfiles: 'allow' } ))
+//   //.use('/.well-known/acme-challenge', express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), { dotfiles: 'allow' } ))
+//   //.use( 'public/.well-known/acme-challenge', express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), {index: true}))
+//   .set('views', path.join(__dirname, 'views'))
+//   .set('view engine', 'ejs')
+//   .get('/', (req, res) => res.render('pages/index'))
+//   //.get('/.well-known/acme-challenge/vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE', (req, res) => res.send('vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE.d0FtQceWed-EcSjRPleaY5YGIYBNlU5dlgnYoMXql7w'))
+//   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
+express().get('/.well-known/acme-challenge/:content', function(req, res) {
+  res.send('vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE.d0FtQceWed-EcSjRPleaY5YGIYBNlU5dlgnYoMXql7w')
+})
 
 
 // var url   = require('url');
