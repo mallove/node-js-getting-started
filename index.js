@@ -10,7 +10,9 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
+  .get('/.well-known/acme-challenge/vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE', (req, res) => res.send('vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE.d0FtQceWed-EcSjRPleaY5YGIYBNlU5dlgnYoMXql7w'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 
 var url   = require('url');
 var Redis = require('ioredis');
