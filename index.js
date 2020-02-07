@@ -5,7 +5,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 express()
-  .use(express.static(path.join(__dirname, 'public'), { dotfiles: 'allow' } ))
+  //.use(express.static(path.join(__dirname, 'public'), { dotfiles: 'allow' } ))
   .use(express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), { dotfiles: 'allow' } ))
   //.use( 'public/.well-known/acme-challenge', express.static(path.join(__dirname, 'public/.well-known/acme-challenge'), {index: true}))
   .set('views', path.join(__dirname, 'views'))
