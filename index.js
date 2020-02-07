@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000
 //   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-express().get('/.well-known/acme-challenge/:content', function(req, res) {
+express().get('/.well-known/acme-challenge2/:content', function(req, res) {
   res.send('vtweT3z1t3GccmkB-gnpCFdLQVSwZnrVYij-DOxiVWE.d0FtQceWed-EcSjRPleaY5YGIYBNlU5dlgnYoMXql7w')
 })
 
